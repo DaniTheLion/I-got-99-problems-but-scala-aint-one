@@ -9,6 +9,12 @@ object P7 extends App {
     }
   }
 
+  def flatten2(l: List[Any]): List[Any] = l match {
+    case (ys: List[_]) :: xs => flatten(ys) ++ flatten(xs)
+    case x :: xs => x :: flatten2(xs)
+    case Nil => Nil
+  }
+
   val res = flatten(List(List(1, 2)))
   assert(res == List(1,2), s"Nope.. got: ${res}")
 
